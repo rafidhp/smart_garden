@@ -133,13 +133,13 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
-                                        <img src="{{ asset('assets/turbidityWater.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">TURBIDITY OF WATER</h4>
+                                        <img src="{{ asset('assets/airTemperature2.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
+                                        <h4 class="card-title fw-bold pt-1">AIR HUMIDITY</h4>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col d-flex justify-content-center">
-                                        <p style="font-size: 90px;" id="turbidity">0</p>
+                                        <p style="font-size: 90px;" id="airHumidity">0</p>
                                     </div>
                                 </div>
                             </div>
@@ -187,27 +187,6 @@
                         <!-- air humidity end -->
                     </div>
                 </div>
-                <div class="row d-flex justify-content-center align-items-center">
-                    <div class="col-md-6 col-sm-12">
-                        <!-- air humidity card start -->
-                        <div class="card border-0 mb-5" style="background-color: #d9d9d9; box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.45);">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col d-flex align-items-center">
-                                        <img src="{{ asset('assets/airTemperature2.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">AIR HUMIDITY</h4>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col d-flex justify-content-center">
-                                        <p style="font-size: 90px;" id="airHumidity">0</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- air humidity card end -->
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -225,14 +204,6 @@
             </div>
             <div class="col-md-12 col-sm-5">
                 <div id="tds-diagram" style="width: 100%; height: fit-content;" class="overflow-x-auto"></div>
-            </div>
-        </div>
-        <div class="row mt-4 mb-2">
-            <div class="col-md-12 mb-3">
-                <h1 class="text-center fw-bold">TURBIDITY OF WATER</h1>
-            </div>
-            <div class="col-md-12 col-sm-5">
-                <div id="tow-diagram" style="width: 100%; height: fit-content;" class="overflow-x-auto"></div>
             </div>
         </div>
 
@@ -280,7 +251,6 @@
     <script>
         PH_DIAGRAM = document.getElementById('ph-diagram');
         TDS_DIAGRAM = document.getElementById('tds-diagram');
-        TOW_DIAGRAM = document.getElementById('tow-diagram');
         let tds = document.getElementById('tds')
         let ppm = document.getElementById('ppm')
         var d = [{ Spalte: tds}];
@@ -339,12 +309,6 @@
             loadData();
             setInterval(loadData, 1000);
         });
-
-
-        Plotly.newPlot( TOW_DIAGRAM, [{
-        x: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        y: [1, 2, 10, 5, 5, 14, 3], }], {
-        margin: { t: 0 } } );
 
         $(document).ready( function() {
             setInterval(() => {
