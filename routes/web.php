@@ -19,6 +19,9 @@ use App\Http\Controllers\SimpanController;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+Route::get('/id', function () {
+    return view('home');
+})->name('home.id');
 
 Route::get('/ppp', function () {
     return view('simpanSensor.coba');
@@ -27,10 +30,13 @@ Route::get('/ppp', function () {
 Route::get('/simpan-tds', [SensorController::class, 'grafikTds']);
 
 Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::get('login/id', [AuthController::class, 'login'])->name('login.id');
 Route::post('login', [AuthController::class, 'auth'])->name('login.auth');
 Route::get('register', [AuthController::class, 'register'])->name('register');
+Route::get('register/id', [AuthController::class, 'register'])->name('register.id');
 Route::post('register', [AuthController::class, 'store'])->name('register.store');
 Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
+Route::get('dashboard/id', [AuthController::class, 'dashboard'])->name('dashboard.id');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('air', [SensorController::class, 'air']);
 Route::get('ph', [SensorController::class, 'ph']);

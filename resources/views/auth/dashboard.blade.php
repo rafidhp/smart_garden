@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/new_logo.png') }}" type="image/x-icon">
-    <title>Smart Garden | Dashboard</title>
+    <title>Dashboard | Smart Garden</title>
 </head>
 <body>
     <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #183d3d;" id="home">
+    <nav class="navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #183d3d;" id="home">
         <div class="container-fluid">
-          <img src="{{ asset('assets/new_logo.png') }}" alt="smart garden" class="navbar-brand ms-2 mt-0" style="width: 45px;">
-          <label class="navbar-brand fw-semibold" style="font-family: sans-serif; color: #93b1a6;">Smart Garden</label>
+            <a href="{{ route('home') }}" style="text-decoration: none">
+                <img src="{{ asset('assets/new_logo.png') }}" alt="smart garden" class="navbar-brand ms-2 mt-0" style="width: 45px;">
+            </a>
+            <label class="navbar-brand fw-semibold" style="font-family: sans-serif;"><a href="{{ route('home') }}" style="text-decoration: none; color: #93b1a6;">Smart Garden</a></label>
           <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -120,7 +122,7 @@
                                 <div class="row">
                                     <div class="col d-flex justify-content-center">
                                         <p style="font-size: 90px;" class="me-3" id="ph">0</p>
-                                        <p style="font-size: 90px;">°C</p>
+                                        {{-- <p style="font-size: 90px;"></p> --}}
                                     </div>
                                 </div>
                             </div>
@@ -228,10 +230,16 @@
             </div>
             <div class="row">
                 <div class="col mb-3 d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/icon_fb.png') }}" alt="..." class="img-fluid me-2">
+                    <a href="https://www.facebook.com/RPL.neskar/photos/" target="_blank">
+                        <img src="{{ asset('assets/icon_fb.png') }}" alt="..." class="img-fluid me-2">
+                    </a>
                     <img src="{{ asset('assets/icon_github.png') }}" alt="..." class="img-fluid me-2">
-                    <img src="{{ asset('assets/icon_ig.png') }}" alt="..." class="img-fluid ms-1">
-                    <img src="{{ asset('assets/icon_yt.png') }}" alt="..." class="img-fluid ms-3">
+                    <a href="https://instagram.com/pplg_neskar?igshid=MzRlODBiNWFlZA==" target="_blank">
+                        <img src="{{ asset('assets/icon_ig.png') }}" alt="..." class="img-fluid ms-1">
+                    </a>
+                    <a href="https://www.youtube.com/@pplgsmkn1karawang313" target="_blank">
+                        <img src="{{ asset('assets/icon_yt.png') }}" alt="..." class="img-fluid ms-3">
+                    </a>
                 </div>
             </div>
             <hr style="height: 3px; background-color: #76AEFF;">
@@ -244,9 +252,28 @@
     </footer>
     <!-- Footer End -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="{{ asset('assets/new_logo.png') }}" alt="..." style="width: 40px" class="modal-title me-2">
+                    <h1 class="modal-title fs-5 fw-bold" style="font-family: sans-serif; color: #367881;" id="exampleModalLabel">Smart Garden</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p id="alertMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/plotly-2.26.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
     <script>
         PH_DIAGRAM = document.getElementById('ph-diagram');
@@ -254,22 +281,60 @@
         let tds = document.getElementById('tds')
         let ppm = document.getElementById('ppm')
         var d = [{ Spalte: tds}];
+        var modalAlreadyShown = false;
 
+        // ubahTds = () => {
+        //     let tdsValue = parseInt(d[0].Spalte.textContent.trim(), 10);
+
+        //     if(!modalAlreadyShown) {
+        //         if(tdsValue < 1050) {
+        //             tds.style.color = "red";
+        //             ppm.style.color = "red";
+        //             document.getElementById('alertMessage').innerText = "Your TDS figure is outside normal limits";
+        //             $('#alertModal').modal('show');
+        //             modalAlreadyShown = true
+        //         } else if(tdsValue > 1400) {
+        //             tds.style.color = "red";
+        //             ppm.style.color = "red";
+        //             document.getElementById('alertMessage').innerText = "Your TDS figure is outside normal limits";
+        //             $('#alertModal').modal('show');
+        //             modalAlreadyShown = true
+        //         } else {
+        //             tds.style.color = "green";
+        //             ppm.style.color = "green";
+        //             modalAlreadyShown = false
+        //         }
+        //     }
+        //     console.log(tdsValue)
+        // }
+        // setInterval(ubahTds, 1000);
         ubahTds = () => {
             let tdsValue = parseInt(d[0].Spalte.textContent.trim(), 10);
-            if(tdsValue < 1020) {
+
+            if(tdsValue < 1050) {
                 tds.style.color = "red";
                 ppm.style.color = "red";
-            } else if(tdsValue >= 1050 && tdsValue <= 1400) {
+                if(!modalAlreadyShown) {
+                    document.getElementById('alertMessage').innerText = "TDS is too low!";
+                    $('#alertModal').modal('show');
+                    modalAlreadyShown = true
+                }
+            } else if(tdsValue > 1400) {
+                tds.style.color = "red";
+                ppm.style.color = "red";
+                if(!modalAlreadyShown) {
+                    document.getElementById('alertMessage').innerText = "TDS is too high!";
+                    $('#alertModal').modal('show');
+                    modalAlreadyShown = true
+                }
+            } else {
                 tds.style.color = "green";
                 ppm.style.color = "green";
-            } else {
-                tds.style.color = "red";
-                ppm.style.color = "red";
+                modalAlreadyShown = false
             }
-            console.log(tdsValue)
         }
-        setInterval(ubahTds, 1000);
+        setInterval(ubahTds, 1000)
+
         Plotly.newPlot( PH_DIAGRAM, [{
         x: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
         y: [1, 2, 10, 5, 5, 14, 3], }], {
