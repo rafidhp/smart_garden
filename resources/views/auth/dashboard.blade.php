@@ -56,7 +56,7 @@
                         </div>
                         <div class="row">
                             <div class="col d-flex justify-content-center mt-2">
-                                <img src="http://192.168.187.103:81/stream" alt="Cam is Offline" class="img-fluid">
+                                <img src="http://172.16.21.43:81/stream" alt="Cam is Offline" class="img-fluid">
                             </div>
                         </div>
                     </div>

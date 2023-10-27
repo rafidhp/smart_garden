@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/new_logo.png') }}" type="image/x-icon">
     <title>Register | Smart Garden</title>
 </head>
-<body style="background-size: auto; background-repeat: no-repeat; background-image: url('{{ asset('assets/SmartGarden3.png') }}'); height: 100%;">
+<body style="background-size: auto; background-image: url('{{ asset('assets/SmartGarden3.png') }}'); height: 100%;">
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-sm navbar-light fixed-top" style="background-color: #183d3d;" id="home">
         <div class="container-fluid">
@@ -179,7 +179,12 @@
                 </form> --}}
                 <div class="row mt-2">
                     <div class="col mb-3 d-flex justify-content-center">
-                        <a href="https://wa.me/6285893397715" class="btn fw-bold mt-3 px-5" style="background-color: #657B00; color: #ffffff; font-family: 'poppins"><img src="{{ asset('assets/whatsapp.png') }}" alt="..." class="me-3">
+                        <a href="@if (Request::segment(2) == 'id')
+                        https://wa.me/6289604690937?text=Halo+tim+Code+Craft!+Saya+tertarik+untuk+bergabung.+apakah+ada+cara+untuk+mendaftar?+
+                        @else
+                        https://wa.me/6289604690937?text=Hello+Code+Craft+Team!+I'm+interested+in+joining.+Is+there+a+way+to+register?+
+                        @endif
+                        " class="btn fw-bold mt-3 px-5" style="background-color: #657B00; color: #ffffff; font-family: 'poppins"><img src="{{ asset('assets/whatsapp.png') }}" alt="..." class="me-3">
                             @if (Request::segment(2) == 'id')
                                 Daftar melalui Whatsapp
                             @else

@@ -104,14 +104,14 @@
                     </a>
                 @else
                     <a href="@if (Request::segment(1) == 'id')
-                        {{ route('register.id') }}
+                        {{ route('login.id') }}
                     @else
-                        {{ route('register') }}
+                        {{ route('login') }}
                     @endif" class="btn mx-3 fw-bold px-4" style="background-color: #5C8374; color: #ffffff; border-radius: 100px;" type="button">
                         @if (Request::segment(1) == 'id')
-                            Daftar
+                            Masuk
                         @else
-                            Register
+                            Login
                         @endif
                     </a>
                 @endif
@@ -375,7 +375,13 @@
     <!-- Our Gallery View Start -->
     <div class="container-xxl mb-4">
         <div class="d-flex justify-content-center align-items-center">
-            <h2 class="mt-5 mb-3 fw-semibold px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">Our Gallery View</h2>
+            <h2 class="mt-5 mb-3 fw-semibold px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">
+                @if (Request::segment(1) == 'id')
+                Galeri Kami
+                @else
+                Our Gallery View
+                @endif
+            </h2>
         </div>
         <div class="row">
             <div class="col-5 px-0">
@@ -405,7 +411,13 @@
 
     <!-- About Us Start -->
     <div class="d-flex justify-content-center align-items-center" id="about">
-        <h2 class="text-center fw-semibold mt-5 mb-3 px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">About Us</h2>
+        <h2 class="text-center fw-semibold mt-5 mb-3 px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">
+            @if (Request::segment(1) == 'id')
+            Tentang Kami
+            @else
+            About Us
+            @endif
+        </h2>
     </div>
     <div style="background-color: #183D3D;" class="py-5 mb-5">
         <div class="container d-flex justify-content-center align-items-center my-3">
@@ -413,10 +425,22 @@
                 <div class="col-md-6 col-sm-5">
                     <div class="row d-flex flex-column justify-content-center align-items-center">
                         <div class="col mt-3">
-                            <p style="color: white; font-size: 18px;" class="mb-5">Smart Garden Hydroponics is a leading innovation hub in the world of modern hydroponics-based agriculture. We specialize in developing smart and eco-friendly hydroponic systems, enabling individuals and communities to cultivate remarkable crops without the need for extensive land or hazardous pesticides.</p>
+                            <p style="color: white; font-size: 18px;" class="mb-5">
+                                @if (Request::segment(1) == 'id')
+                                Smart Garden Hidroponik merupakan inovasi dalam dunia pertanian berbasis hidroponik modern. Kami mengkhususkan diri dalam pengembangan sistem hidroponik pintar dan ramah lingkungan, memungkinkan individu dan komunitas untuk menanam tanaman tanpa perlu lahan yang luas atau pestisida berbahaya.
+                                @else
+                                Smart Garden Hydroponics is a leading innovation hub in the world of modern hydroponics-based agriculture. We specialize in developing smart and eco-friendly hydroponic systems, enabling individuals and communities to cultivate remarkable crops without the need for extensive land or hazardous pesticides.
+                                @endif
+                            </p>
                         </div>
                         <div class="col mb-2">
-                            <p style="color: white; font-size: 18px;">We invite you to join us in our journey towards smarter, cleaner, and more sustainable farming, while committing to continuous innovation and knowledge sharing within our community. Together, we can create a greener, more sustainable, and hopeful future.</p>
+                            <p style="color: white; font-size: 18px;">
+                                @if (Request::segment(1) == 'id')
+                                Kami mengundang Anda untuk bergabung dengan kami dalam perjalanan menuju pertanian yang lebih cerdas, lebih bersih, dan lebih berkelanjutan, sambil berkomitmen untuk terus menerus berinovasi dan berbagi pengetahuan dalam komunitas kami. Bersama, kita dapat menciptakan masa depan yang lebih hijau, lebih berkelanjutan, dan lebih penuh harapan.
+                                @else
+                                We invite you to join us in our journey towards smarter, cleaner, and more sustainable farming, while committing to continuous innovation and knowledge sharing within our community. Together, we can create a greener, more sustainable, and hopeful future.
+                                @endif
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -430,40 +454,82 @@
 
     <!-- our team start -->
     <div class="d-flex justify-content-center align-items-center">
-        <h2 class="text-center fw-semibold mt-1 mb-2 px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">Our Team</h2>
+        <h2 class="text-center fw-semibold mt-1 mb-2 px-4 py-2 rounded-3" style="color: #181820; font-family: 'lora'; background-color: #d9d9d9;">
+            @if (Request::segment(1) == 'id')
+                Tim Kami
+            @else
+            Our Team
+            @endif
+        </h2>
     </div>
     <section id="tim">
         <div class="container">
             <div class="row">
                 <div class="col">
                     <div class="row">
-                        <p style="color: #000000; font-family: poppins; font-style: italic;" class="fs-6 text-center">Technology in Growth: We Are the SmartGarden Team.</p>
+                        <p style="color: #000000; font-family: poppins; font-style: italic;" class="fs-6 text-center">
+                            @if (Request::segment(1) == 'id')
+                            Teknologi dalam Pertumbuhan: Kami Adalah Tim Code Craft.
+                            @else
+                            Technology in Growth: We Are the Code Craft Team.
+                            @endif
+                        </p>
                         <div class="col d-flex flex-column align-items-center" style="line-height: 13px;">
                             <img src="{{ asset('./assets/rafi.png') }}" alt="..." class="img-fluid mb-4 rounded-5" style="width: 200px;">
                             <p class="fw-semibold fs-5" style="color: #000000; line-height: normal;">Rafi Islami Pasha DHP</p>
-                            <p class="fs-6" style="color: #000000;">Web Developer</p>
+                            <p class="fs-6" style="color: #000000;">
+                                @if (Request::segment(1) == 'id')
+                                Pengembang Web
+                                @else
+                                Web Developer
+                                @endif
+                            </p>
                         </div>
                         <div class="col d-flex flex-column align-items-center" style="line-height: 13px;">
                             <img src="{{ asset('./assets/pa_gunawan.png') }}" alt="..." class="img-fluid mb-4 rounded-5" style="width: 200px;">
                             <p class="fw-semibold fs-5" style="color: #000000; line-height: normal;">Gunawan Busyaeri S.pd</p>
-                            <p class="fs-6" style="color: #000000;">Mentor</p>
+                            <p class="fs-6" style="color: #000000;">
+                                @if (Request::segment(1) == 'id')
+                                Guru Pembimbing
+                                @else
+                                Mentor
+                                @endif
+                            </p>
                         </div>
                         <div class="col d-flex flex-column align-items-center" style="line-height: 13px;">
                             <img src="{{ asset('./assets/bagas.png') }}" alt="..." class="img-fluid mb-4 rounded-5" style="width: 200px;">
                             <p class="fw-semibold fs-5" style="color: #000000; line-height: normal;">Bagas Aris Prasetyo</p>
-                            <p class="fs-6" style="color: #000000;">System and User Analyst</p>
+                            <p class="fs-6" style="color: #000000;">
+                                @if (Request::segment(1) == 'id')
+                                Analis Sistem dan Pengguna
+                                @else
+                                System and User Analyst
+                                @endif
+                            </p>
                         </div>
                     </div>
                     <div class="row d-flex mb-5 mt-3">
                         <div class="col d-flex flex-column align-items-center" style="line-height: 13px;">
                             <img src="{{ asset('./assets/moreno.png') }}" alt="..." class="img-fluid mb-4 rounded-5" style="width: 200px;">
                             <p class="fw-semibold fs-5" style="color: #000000; line-height: normal;">Moreno Dwi Putra</p>
-                            <p class="fs-6" style="color: #000000;">IoT Developer</p>
+                            <p class="fs-6" style="color: #000000;">
+                                @if (Request::segment(1) == 'id')
+                                Pengembang IoT
+                                @else
+                                IoT Developer
+                                @endif
+                            </p>
                         </div>
                         <div class="col d-flex flex-column align-items-center" style="line-height: 13px;">
                             <img src="{{ asset('./assets/sultan.png') }}" alt="..." class="img-fluid mb-4 rounded-5" style="width: 200px;">
                             <p class="fw-semibold fs-5" style="color: #000000; line-height: normal;">Sultan Badra Maulana</p>
-                            <p class="fs-6" style="color: #000000;">UI/UX Designer</p>
+                            <p class="fs-6" style="color: #000000;">
+                                @if (Request::segment(1) == 'id')
+                                Perancang UI/UX
+                                @else
+                                UI/UX Designer
+                                @endif
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -485,9 +551,33 @@
             </div>
             <div class="row">
                 <div class="col mb-4 d-flex justify-content-center align-items-center">
-                    <a href="{{ route('home') }}" class="text-decoration-none me-4" style="color: #ffffff;">Home</a>
-                    <a href="{{ route('home') }}#about" class="text-decoration-none mx-2" style="color: #ffffff;">About</a>
-                    <a href="{{ route('dashboard') }}" class="text-decoration-none ms-4" style="color: #ffffff;">Dashboard</a>
+                    <a href="@if (Request::segment(1) == 'id')
+                        {{ route('home.id') }}
+                    @else
+                        {{ route('home') }}
+                    @endif" class="text-decoration-none me-4" style="color: #ffffff;">
+                    @if (Request::segment(1) == 'id')
+                        Beranda
+                    @else
+                        Home
+                    @endif
+                    </a>
+                    <a href="@if (Request::segment(1) == 'id')
+                        {{ route('home.id') }}#about
+                    @else
+                        {{ route('home') }}#about
+                    @endif" class="text-decoration-none mx-2" style="color: #ffffff;">
+                    @if (Request::segment(1) == 'id')
+                        Tentang Kami
+                    @else
+                        About
+                    @endif
+                    </a>
+                    <a href="@if (Request::segment(1) == 'id')
+                        {{ route('dashboard.id') }}
+                    @else
+                        {{ route('dashboard') }}
+                    @endif" class="text-decoration-none ms-4" style="color: #ffffff;">Dashboard</a>
                 </div>
             </div>
             <div class="row">
