@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/new_logo.png') }}" type="image/x-icon">
-    <title>Login | Smart Garden</title>
+    <style>
+        #eye-icon:hover {
+            cursor: pointer;
+        }
+    </style>
+    <title>@if (Request::segment(2) == 'id')
+        Masuk
+    @else
+        Login
+    @endif | Smart Garden</title>
 </head>
 <body style="background-image: url('{{ asset('assets/SmartGarden3.png') }}'); height: 100%;">
     <!-- Navbar Start -->

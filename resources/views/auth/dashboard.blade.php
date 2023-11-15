@@ -11,10 +11,18 @@
     <!-- Navbar Start -->
     <nav class="navbar navbar-expand-sm navbar-light sticky-top" style="background-color: #183d3d;" id="home">
         <div class="container-fluid">
-            <a href="{{ route('home') }}" style="text-decoration: none">
+            <a href="@if (Request::segment(2) == 'id')
+            {{ route('home.id') }}
+          @else
+            {{ route('home') }}
+          @endif" style="text-decoration: none">
                 <img src="{{ asset('assets/new_logo.png') }}" alt="smart garden" class="navbar-brand ms-2 mt-0" style="width: 45px;">
             </a>
-            <label class="navbar-brand fw-semibold" style="font-family: sans-serif;"><a href="{{ route('home') }}" style="text-decoration: none; color: #93b1a6;">Smart Garden</a></label>
+            <label class="navbar-brand fw-semibold" style="font-family: sans-serif;"><a href="@if (Request::segment(2) == 'id')
+                {{ route('home.id') }}
+              @else
+                {{ route('home') }}
+              @endif" style="text-decoration: none; color: #93b1a6;">Smart Garden</a></label>
           <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
               aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -23,17 +31,70 @@
               <img src="{{ asset('assets/nav2.png') }}" alt="..." class="navbar-brand">
               <ul class="navbar-nav me-auto mt-2 mt-lg-0">
                   <li class="nav-item">
-                      <a href="{{ route('home') }}" class="nav-link ms-3" style="color: #93b1a6; font-size: 18px;">Home</a>
+                      <a href="@if (Request::segment(2) == 'id')
+                      {{ route('home.id') }}
+                    @else
+                      {{ route('home') }}
+                    @endif" class="nav-link ms-3" style="color: #93b1a6; font-size: 18px;">
+                    @if (Request::segment(2) == 'id')
+                        Beranda
+                    @else
+                        Home
+                    @endif
+                    </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('home') }}#about" class="nav-link ms-3" style="color: #93b1a6; font-size: 18px;">About</a>
+                      <a href="@if (Request::segment(2) == 'id')
+                      {{ route('home.id') }}#about
+                    @else
+                      {{ route('home') }}#about
+                    @endif" class="nav-link ms-3" style="color: #93b1a6; font-size: 18px;">
+                    @if (Request::segment(2) == 'id')
+                            Tentang Kami
+                        @else
+                            About
+                        @endif
+                    </a>
                   </li>
                   <li class="nav-item">
-                      <a href="{{ route('dashboard') }}" class="nav-link active fw-semibold ms-3" style="color: #fcfcfc; font-size: 18px; filter: drop-shadow(0px 0px 6px #ffffff);">Dashboard</a>
+                      <a href="@if (Request::segment(2) == 'id')
+                      {{ route('dashboard.id') }}
+                  @else
+                      {{ route('dashboard') }}
+                  @endif" class="nav-link active fw-semibold ms-3" style="color: #fcfcfc; font-size: 18px; filter: drop-shadow(0px 0px 6px #ffffff);">Dashboard</a>
                   </li>
               </ul>
               <form class="d-flex my-2 my-lg-0">
-                  <a href="{{ route('logout') }}" class="btn btn-danger me-3 fw-bold px-4" style="color: #ffffff; border-radius: 100px;" type="button">Logout</a>
+                <div class="dropdown">
+                    <button class="btn px-3 fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #5C8374; color: #ffffff; border-radius: 100px;">
+                      <img src="@if (Request::segment(2) == 'id')
+                      {{ asset('assets/id.png') }}
+                  @else
+                      {{ asset('assets/en.png') }}
+                  @endif" alt="en" style="width: 20px" class="me-1">
+                      @if (Request::segment(2) == 'id')
+                          Bahasa
+                      @else
+                          Language
+                      @endif
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="@if (Request::segment(2) == 'id')
+                          {{ route('dashboard') }}
+                      @else
+                          {{ route('dashboard.id') }}
+                      @endif">
+                          @if (Request::segment(2) == 'id')
+                          <img src="{{ asset('assets/en.png') }}" alt="..." style="width: 20px" class="me-1">
+                          Language
+                          @else
+                          <img src="{{ asset('assets/id.png') }}" alt="..." style="width: 20px" class="me-1">
+                              Bahasa
+                          @endif
+                      </a></li>
+                    </ul>
+                </div>
+                  <a href="{{ route('logout') }}" class="btn btn-danger mx-3 fw-bold px-4" style="color: #ffffff; border-radius: 100px;" type="button">Logout</a>
               </form>
           </div>
     </div>
@@ -72,7 +133,13 @@
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
                                         <img src="{{ asset('assets/waterTemperature.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">WATER TEMPERATURE</h4>
+                                        <h4 class="card-title fw-bold pt-1">
+                                            @if (Request::segment(2) == 'id')
+                                            SUHU AIR
+                                            @else
+                                            WATER TEMPERATURE
+                                            @endif
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -94,7 +161,13 @@
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
                                         <img src="{{ asset('assets/tdsSensor.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">TOTAL DISSOLVED SOLIDS</h4>
+                                        <h4 class="card-title fw-bold pt-1">
+                                            @if (Request::segment(2) == 'id')
+                                            TOTAL PADATAN TERLARUT
+                                            @else
+                                            TOTAL DISSOLVED SOLIDS
+                                            @endif
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -136,7 +209,13 @@
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
                                         <img src="{{ asset('assets/airTemperature2.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">AIR HUMIDITY</h4>
+                                        <h4 class="card-title fw-bold pt-1">
+                                            @if (Request::segment(2) == 'id')
+                                            KELEMBABAN UDARA
+                                            @else
+                                            AIR HUMIDITY
+                                            @endif
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -157,7 +236,13 @@
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
                                         <img src="{{ asset('assets/UV.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">ULTRAVIOLET (UV)</h4>
+                                        <h4 class="card-title fw-bold pt-1">
+                                            @if (Request::segment(2) == 'id')
+                                            SINAR UV
+                                            @else
+                                            ULTRAVIOLET (UV)
+                                            @endif
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -176,7 +261,13 @@
                                 <div class="row">
                                     <div class="col d-flex align-items-center">
                                         <img src="{{ asset('assets/humidityAir.png') }}" alt="..." class="img-fluid me-2" style="width: 30px; height: 30px;">
-                                        <h4 class="card-title fw-bold pt-1">AIR TEMPERATURE</h4>
+                                        <h4 class="card-title fw-bold pt-1">
+                                            @if (Request::segment(2) == 'id')
+                                            SUHU UDARA
+                                            @else
+                                            AIR TEMPERATURE
+                                            @endif
+                                        </h4>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -202,7 +293,13 @@
         </div>
         <div class="row mt-4">
             <div class="col-md-12 mb-3">
-                <h1 class="text-center fw-bold">TOTAL DISSOLVED SOLIDS</h1>
+                <h1 class="text-center fw-bold">
+                    @if (Request::segment(2) == 'id')
+                    TOTAL PADATAN TERLARUT
+                    @else
+                    TOTAL DISSOLVED SOLIDS
+                    @endif
+                </h1>
             </div>
             <div class="col-md-12 col-sm-5">
                 <div id="tds-diagram" style="width: 100%; height: fit-content;" class="overflow-x-auto"></div>
@@ -223,9 +320,33 @@
             </div>
             <div class="row">
                 <div class="col mb-4 d-flex justify-content-center align-items-center">
-                    <a href="{{ route('home') }}" class="text-decoration-none me-4" style="color: #ffffff;">Home</a>
-                    <a href="{{ route('home') }}#about" class="text-decoration-none mx-2" style="color: #ffffff;">About</a>
-                    <a href="{{ route('dashboard') }}" class="text-decoration-none ms-4" style="color: #ffffff;">Dashboard</a>
+                    <a href="@if (Request::segment(2) == 'id')
+                    {{ route('home.id') }}
+                  @else
+                    {{ route('home') }}
+                  @endif" class="text-decoration-none me-4" style="color: #ffffff;">
+                    @if (Request::segment(2) == 'id')
+                        Beranda
+                    @else
+                        Home
+                    @endif
+                    </a>
+                    <a href="@if (Request::segment(2) == 'id')
+                    {{ route('home.id') }}#about
+                  @else
+                    {{ route('home') }}#about
+                  @endif" class="text-decoration-none mx-2" style="color: #ffffff;">
+                    @if (Request::segment(2) == 'id')
+                        Tentang Kami
+                    @else
+                        About
+                    @endif
+                </a>
+                    <a href="@if (Request::segment(2) == 'id')
+                    {{ route('dashboard.id') }}
+                  @else
+                    {{ route('dashboard') }}
+                  @endif" class="text-decoration-none ms-4" style="color: #ffffff;">Dashboard</a>
                 </div>
             </div>
             <div class="row">
@@ -265,7 +386,13 @@
                     <p id="alertMessage"></p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        @if (Request::segment(2) == 'id')
+                        Tutup
+                        @else
+                        Close
+                        @endif
+                    </button>
                 </div>
             </div>
         </div>
@@ -283,31 +410,6 @@
         var d = [{ Spalte: tds}];
         var modalAlreadyShown = false;
 
-        // ubahTds = () => {
-        //     let tdsValue = parseInt(d[0].Spalte.textContent.trim(), 10);
-
-        //     if(!modalAlreadyShown) {
-        //         if(tdsValue < 1050) {
-        //             tds.style.color = "red";
-        //             ppm.style.color = "red";
-        //             document.getElementById('alertMessage').innerText = "Your TDS figure is outside normal limits";
-        //             $('#alertModal').modal('show');
-        //             modalAlreadyShown = true
-        //         } else if(tdsValue > 1400) {
-        //             tds.style.color = "red";
-        //             ppm.style.color = "red";
-        //             document.getElementById('alertMessage').innerText = "Your TDS figure is outside normal limits";
-        //             $('#alertModal').modal('show');
-        //             modalAlreadyShown = true
-        //         } else {
-        //             tds.style.color = "green";
-        //             ppm.style.color = "green";
-        //             modalAlreadyShown = false
-        //         }
-        //     }
-        //     console.log(tdsValue)
-        // }
-        // setInterval(ubahTds, 1000);
         ubahTds = () => {
             let tdsValue = parseInt(d[0].Spalte.textContent.trim(), 10);
 
@@ -315,7 +417,11 @@
                 tds.style.color = "red";
                 ppm.style.color = "red";
                 if(!modalAlreadyShown) {
-                    document.getElementById('alertMessage').innerText = "TDS is too low!";
+                    document.getElementById('alertMessage').innerText = @if (Request::segment(2) == 'id')
+                        'TDS terlalu rendah!'
+                    @else
+                        'TDS is too low!'
+                    @endif;
                     $('#alertModal').modal('show');
                     modalAlreadyShown = true
                 }
@@ -323,7 +429,11 @@
                 tds.style.color = "red";
                 ppm.style.color = "red";
                 if(!modalAlreadyShown) {
-                    document.getElementById('alertMessage').innerText = "TDS is too high!";
+                    document.getElementById('alertMessage').innerText = @if (Request::segment(2) == 'id')
+                        'TDS terlalu tinggi!'
+                    @else
+                        'TDS is too high!'
+                    @endif;
                     $('#alertModal').modal('show');
                     modalAlreadyShown = true
                 }
@@ -358,11 +468,19 @@
 
                 var layout = {
                     xaxis: {
-                        title: 'Time',
+                        title: @if (Request::segment(2) == 'id')
+                            'Waktu'
+                        @else
+                            'Time'
+                        @endif,
                         showgrid: true
                     },
                     yaxis: {
-                        title: 'Data Value',
+                        title: @if (Request::segment(2) == 'id')
+                            'Data Nilai'
+                        @else
+                            'Data Value'
+                        @endif,
                         showgrid: true
                     }
                 };

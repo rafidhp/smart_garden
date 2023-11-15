@@ -278,9 +278,11 @@
     <!-- Sannin End -->
 
     <!-- Section 3 Start -->
-    <div class="row d-flex align-items-center justify-content-center container-xxl ps-0 pe-0 mb-3" style="height: fit-content;">
-        <div class="col-md-6 col-sm-5 pe-0 d-flex align-items-center justify-content-center" style="height: 100%;">
-            <img src="{{ asset('assets/dashboard2.png') }}" alt="..." class="img-fluid" style="height: 100%">
+    <div class="row d-flex align-items-center justify-content-center container-xxl ps-0 pe-0 mb-3" @if (Request::segment(1) == 'id')
+        style="background-color: #e4e4dd"
+    @endif>
+        <div class="col-md-6 col-sm-5 pe-0 d-flex align-items-center justify-content-center">
+            <img src="{{ asset('assets/dashboard3.png') }}" alt="..." class="img-fluid">
         </div>
         <div class="col-md-6 col-sm-5 pe-0">
             <div class="row d-flex"> {{-- style="height: 50%;" --}}
@@ -385,20 +387,20 @@
         </div>
         <div class="row">
             <div class="col-5 px-0">
-                <img src="{{ asset('assets/gallery_view(3).png') }}" alt="..." class="img-fluid" width="560px">
+                <img src="{{ asset('assets/gallery1(1).png') }}" alt="..." class="img-fluid" width="560px">
             </div>
             <div class="col-7">
                 <div class="row mb-3">
                     <div class="col">
-                        <img src="{{ asset('assets/gallery_view2.png') }}" alt="..." class="img-fluid">
+                        <img src="{{ asset('assets/gallery2(1).png') }}" alt="..." class="img-fluid">
                     </div>
                     <div class="col px-0">
-                        <img src="{{ asset('assets/gallery_view3.png') }}" alt="..." class="img-fluid">
+                        <img src="{{ asset('assets/gallery3.png') }}" alt="..." class="img-fluid h-100">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <img src="{{ asset('assets/gallery_view4.png') }}" alt="..." class="img-fluid text-start">
+                        <img src="{{ asset('assets/gallery4.png') }}" alt="..." class="img-fluid text-start h-100">
                     </div>
                     <div class="col px-0">
                         <img src="{{ asset('assets/gallery_view5.png') }}" alt="..." class="img-fluid">

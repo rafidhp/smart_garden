@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="shortcut icon" href="{{ asset('assets/new_logo.png') }}" type="image/x-icon">
-    <title>Register | Smart Garden</title>
+    <title>@if (Request::segment(2) == 'id')
+        Daftar
+    @else
+        Register
+    @endif | Smart Garden</title>
 </head>
 <body style="background-size: auto; background-image: url('{{ asset('assets/SmartGarden3.png') }}'); height: 100%;">
     <!-- Navbar Start -->

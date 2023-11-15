@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ph_turbidities', function (Blueprint $table) {
             $table->id();
-            $table->integer('ph');
+            $table->float('ph');
             $table->integer('turbidity');
             $table->timestamps();
         });

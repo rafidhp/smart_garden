@@ -44,20 +44,36 @@ class SensorController extends Controller
     public function simpanAirTds(Request $request)
     {
         // Ambil jumlah total data yang ada dalam SimpanTds
-        $totalData = SimpanTds::count();
+        // $totalData = SimpanTds::count();
 
-        // Cek apakah jumlah data sudah mencapai 24
-        if ($totalData >= 24) {
-            // Hapus data dengan id terkecil (paling tua)
-            $oldestData = SimpanTds::orderBy('id', 'asc')->first();
-            $oldestData->delete();
-        }
-        SimpanTds::create(['data_tds' => $request->nilaiTds]);
+        // // Cek apakah jumlah data sudah mencapai 24
+        // if ($totalData >= 24) {
+        //     // Hapus data dengan id terkecil (paling tua)
+        //     $oldestData = SimpanTds::orderBy('id', 'asc')->first();
+        //     $oldestData->delete();
+        // }
+        // SimpanTds::create(['data_tds' => $request->nilaiTds]);
         Sensor::where('id', '1')->update(['tds' => request()->nilaiTds, 'air' => request()->nilaiAir]);
+    }
+
+    public function grafik(Request $request) {
+         // Ambil jumlah total data yang ada dalam SimpanTds
+         $totalData = SimpanTds::count();
+
+         // Cek apakah jumlah data sudah mencapai 24
+         if ($totalData >= 24) {
+             // Hapus data dengan id terkecil (paling tua)
+             $oldestData = SimpanTds::orderBy('id', 'asc')->first();
+             $oldestData->delete();
+         }
+         SimpanTds::create(['data_tds' => $request->nilaiTds]);
     }
 
     public function simpanDht11() {
         UvAir::where('id', '1')->update(['uv' => request()->uv, 'air_temperature' => request()->airTemperature, 'air_humidity' => request()->airHumidity]);
+    }
+    public function simpanPh() {
+        PhTurbidity::where('id', '1')->update(['ph' => request()->nilaiPh]);
     }
 
     public function grafikTds() {

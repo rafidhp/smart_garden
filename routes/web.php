@@ -47,5 +47,7 @@ Route::get('turbidity', [SensorController::class, 'turbidity']);
 // Route::post('/air/store', [SensorController::class, 'airStore'])->name('air.store');
 Route::get('tds', [SensorController::class, 'tds']);
 // Route::get('waterTemp', [SensorController::class, 'waterTemp']);
+Route::get('ph/{nilaiPh}', [SensorController::class, 'simpanPh']);
 Route::get('/air-tds/{nilaiTds}/{nilaiAir}', [SensorController::class, 'simpanAirTds']);
+Route::get('/grafik/{nilaiTds}', [SensorController::class, 'grafik']);
 Route::get('/dht_11/{uv}/{airTemperature}/{airHumidity}', [SensorController::class, 'simpanDht11']);
