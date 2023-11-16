@@ -1,3 +1,3 @@
 @foreach ($air as $value)
-    {{ $value->air }}
+    {{ $value->waterTemp }}
 @endforeach
