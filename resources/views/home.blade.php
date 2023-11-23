@@ -442,9 +442,9 @@
                                 @endif
                             </p>
                             @if (Request::segment(1) == 'id')
-                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Toko Kami</a>
+                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold mt-3" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Toko Kami</a>
                             @else
-                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Our Market</a>
+                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold mt-3" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Our Market</a>
                             @endif
                         </div>
                     </div>
