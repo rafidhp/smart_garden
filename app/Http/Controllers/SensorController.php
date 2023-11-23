@@ -55,22 +55,14 @@ class SensorController extends Controller
         SimpanTds::create(['data_tds' => $request->nilaiTds]);
     }
 
-    public function ws() {
+    public function esp8266() {
         Sensor::where('id', '1')->update(['tds' => request()->nilaiTds, 'waterTemp' => request()->waterTemp]);
+        UvAir::where('id', '1')->update(['air_humidity' => request()->airHumidity, 'air_temperature' => request()->airTemperature]);
+    }
+
+    public function esp32() {
         PhTurbidity::where('id', '1')->update(['ph' => request()->nilaiPh]);
-    }
-
-    public function simpanAirTds()
-    {
-        Sensor::where('id', '1')->update(['tds' => request()->nilaiTds, 'air' => request()->nilaiAir]);
-    }
-
-    public function simpanPh() {
-        PhTurbidity::where('id', '1')->update(['ph' => request()->nilaiPh]);
-    }
-
-    public function as() {
-        UvAir::where('id', '1')->update(['uv' => request()->uv, 'air_temperature' => request()->airTemperature, 'air_humidity' => request()->airHumidity]);
+        UvAir::where('id', '1')->update(['uv' => request()->uv]);
     }
 
     public function grafikTds() {
