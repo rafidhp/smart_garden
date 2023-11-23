@@ -441,6 +441,11 @@
                                 We invite you to join us in our journey towards smarter, cleaner, and more sustainable farming, while committing to continuous innovation and knowledge sharing within our community. Together, we can create a greener, more sustainable, and hopeful future.
                                 @endif
                             </p>
+                            @if (Request::segment(1) == 'id')
+                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Toko Kami</a>
+                            @else
+                            <a href="https://shopee.co.id/tefarpl" target="_blank" class="btn px-3 fw-semibold" style="background-color: #ffffff; color: #F1582C; border-radius: 100px"><img src="{{ asset('assets/shopee_oren.png') }}" alt="..." class="img-fluid pb-1 pe-2">Our Market</a>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -585,7 +590,9 @@
                     <a href="https://www.facebook.com/RPL.neskar/photos/" target="_blank">
                         <img src="{{ asset('assets/icon_fb.png') }}" alt="..." class="img-fluid me-2">
                     </a>
-                    <img src="{{ asset('assets/icon_github.png') }}" alt="..." class="img-fluid me-2">
+                    <a href="https://shopee.co.id/tefarpl" target="_blank">
+                        <img src="{{ asset('assets/shopee.png') }}" alt="..." class="img-fluid me-2">
+                    </a>
                     <a href="https://instagram.com/pplg_neskar?igshid=MzRlODBiNWFlZA==" target="_blank">
                         <img src="{{ asset('assets/icon_ig.png') }}" alt="..." class="img-fluid ms-1">
                     </a>
